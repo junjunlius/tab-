@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+ * {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.wrap {
+    width: 600px;
+    height: 400px;
+    margin: 100px auto;
+    border: 1px solid #ccc;
+    position: relative;
+    overflow: hidden;
+}
+
+.ulist {
+    widows: 100%;
+    height: auto;
+}
+
+.ulist>li {
+    width: 149px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    float: left;
+    background: skyblue;
+    color: #fff;
+    border-right: 1px solid #fff;
+}
+
+.olist {
+    width: 600px;
+    height: 400px;
+}
+
+.olist>li {
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    line-height: 400px;
+}
+    </style>
+</head>
+<body>
+
+    <script>
+class Tab {
+     constructor() {
+         this.init();
+     }
+     init() {
+         this.createwrap();
+         this.addEvent();
+     }
+     addEvent() {
+         let uls = document.querySelector('ul');
+         let ulis = uls.querySelectorAll('li');
+
+         for (let i = 0; i < ulis.length; i++) {
+             ulis[i].index = i;
+             ulis[i].addEventListener('click', function() {
+
+                 let ols = document.querySelector('ol');
+                 let olis = ols.querySelectorAll('li');
+                 for (let i = 0; i < olis.length; i++) {
+                     olis[i].style.display = 'none';
+                 }
+                 olis[i].style.display = 'block';
+             })
+         }
+     }
+     createUl() {
+         let Ulist = document.createElement('ul');
+         Ulist.className = 'ulist'
+         for (let i = 0; i < 4; i++) {
+             let uli = document.createElement('li');
+             Ulist.append(uli);
+             uli.innerHTML = i
+         }
+
+         return Ulist;
+     }
+     createOl() {
+         let Olist = document.createElement('ol');
+         Olist.className = 'olist'
+         for (let i = 0; i < 4; i++) {
+             let oli = document.createElement('li');
+             Olist.append(oli);
+             oli.innerHTML = i;
+         }
+
+         return Olist;
+     }
+     createwrap() {
+         let wrap = document.createElement('div');
+         let cul = this.createUl();
+         let col = this.createOl();
+         wrap.className = 'wrap';
+         wrap.append(cul);
+         wrap.append(col);
+         document.body.append(wrap);
+
+     }
+ }
+
+ let tab = new Tab();
+
+    </script>
+    
+</body>
+</html>
